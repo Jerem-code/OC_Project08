@@ -567,6 +567,14 @@ footer {
   gap: 1rem;
 }
 
+.footer-content hr {
+  width: 100%;
+  border: none;
+  height: 1px;
+  background-color: var(--White-Pearl);
+  margin: 0.5rem 0;
+}
+
 .social-links {
   display: flex;
   gap: 1.5rem;
@@ -579,11 +587,15 @@ footer {
   transition: color 0.3s ease;
 }
 
+.social-links img {
+  width: 24px;
+  height: 24px;
+}
+
 .social-links a:hover {
   color: var(--Neon-Blue);
 }
 
 .footer-content p {
-  font-family: var(--font-sans);
-  opacity: 0.8;
+  font-family: var(--font-mono);
 }
