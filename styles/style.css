@@ -168,6 +168,11 @@ nav {
   align-items: center;
 }
 
+.hero .social-links .social-icons {
+  display: flex;
+  gap: 2rem;
+}
+
 .hero .social-links a {
   display: flex;
   align-items: center;
@@ -519,7 +524,7 @@ nav {
     font-size: 1.25rem;
     text-align: center;
     white-space: normal;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
   }
 
   .memoji {
@@ -529,15 +534,30 @@ nav {
   }
 
   .hero .social-links {
-    justify-content: center;
-    width: 100%;
-    gap: 1rem;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .hero .social-links .social-icons {
+    display: flex;
+    gap: 2rem;
   }
 
   .hero .social-links .about-link {
-    margin: 0;
-    font-size: 0.875rem;
-    padding: 0.5rem 1rem;
+    position: relative;
+    color: transparent;
+    width: auto;
+    margin-top: 0.5rem;
+  }
+
+  .hero .social-links .about-link::after {
+    content: "MES PROJETS";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--White-Pearl);
   }
 
   .projects {
@@ -846,6 +866,11 @@ footer {
   height: 1px;
   background-color: var(--White-Pearl);
   margin: 0.5rem 0;
+}
+
+.footer-content .social-icons {
+  display: flex;
+  gap: 2rem;
 }
 
 .social-links {
