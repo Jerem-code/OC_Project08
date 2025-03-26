@@ -39,8 +39,8 @@ navLinks.forEach((link) => {
 // Observer pour mettre à jour le lien actif pendant le défilement
 const observerOptions = {
   root: null,
-  rootMargin: "0px",
-  threshold: 0.5,
+  rootMargin: "-20% 0px -20% 0px",
+  threshold: 0.2,
 };
 
 const observer = new IntersectionObserver((entries) => {
