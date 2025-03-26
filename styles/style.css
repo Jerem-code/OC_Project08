@@ -464,6 +464,24 @@ nav {
     width: 40px;
     height: 40px;
   }
+
+  .nav-links a:not([href="#projets"]) {
+    display: none;
+  }
+
+  .nav-links {
+    margin-right: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-links {
+    display: none;
+  }
+
+  .cta-button {
+    margin-left: auto;
+  }
 }
 
 /* Section Contact */
