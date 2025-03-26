@@ -60,24 +60,113 @@
       <section id="projets" class="projects">
         <h2>Mes projets</h2>
         <div class="projects-grid">
-          <!-- Les projets seront ajoutés ici -->
+          <div class="project-card">
+            <div class="technologies">
+              <span class="tech-tag">React</span>
+            </div>
+            <div class="project-main">
+              <div class="image-container">
+                <img
+                  src="assets/Screenshots/Screen_KASA.webp"
+                  alt="Project Title screenshot"
+                />
+              </div>
+              <div class="content">
+                <h3>Kasa</h3>
+                <p class="description">
+                  Lorem ipsum dolor sit amet consectetur. Ultrices scelerisque
+                  iaculis aliquet dictumst. Sed sociis vestibulum donec duis
+                  dictum sed turpis tristique. Pulvinar sit in in integer. Donec
+                  diam turpis non iaculis morbi ultrices nunc id blandit. Purus
+                  tristique massa turpis eget.
+                </p>
+                <div class="details">
+                  <div class="detail-row">
+                    <span class="detail-label">année_</span>
+                    <span class="detail-value">2024</span>
+                  </div>
+                  <div class="detail-row">
+                    <span class="detail-label">rôle_</span>
+                    <span class="detail-value">Front-end Developer</span>
+                  </div>
+                </div>
+                <div class="links">
+                  <a href="#" target="_blank" rel="noopener noreferrer"
+                    >Live Demo ↗</a
+                  >
+                  <a href="#" target="_blank" rel="noopener noreferrer"
+                    >Github ↗</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       <section id="apropos" class="about">
+        <img
+          src="assets/images/Ellipse.svg"
+          alt="Ellipse décorative"
+          class="about-ellipse"
+        />
         <h2>À propos de moi</h2>
         <div class="skills-grid">
           <div class="skill-card">
+            <img
+              src="assets/images/Ellipse.svg"
+              alt="Ellipse décorative"
+              class="skill-ellipse"
+            />
+            <div class="skill-dot"></div>
             <h3>Développeur Full-Stack</h3>
-            <p>Description de vos compétences en développement full-stack...</p>
+            <p>
+              Du front-end au back-end, je développe des applications web
+              complètes et performantes. J'utilise des technologies modernes
+              comme React, Vue.js, Node.js, etc. pour concevoir des solutions
+              sur-mesure, évolutives et adaptées aux besoins des utilisateurs.
+            </p>
           </div>
           <div class="skill-card">
+            <img
+              src="assets/images/Ellipse.svg"
+              alt="Ellipse décorative"
+              class="skill-ellipse"
+            />
+            <div class="skill-dot"></div>
             <h3>Optimisation de code et performances</h3>
-            <p>Description de vos compétences en optimisation...</p>
+            <p>
+              Un site rapide, c'est une meilleure expérience utilisateur et un
+              meilleur référencement. J'optimise le code en réduisant le temps
+              de chargement, en minimisant les fichiers CSS/JS et en appliquant
+              des bonnes pratiques comme le lazy loading et la mise en cache.
+            </p>
           </div>
           <div class="skill-card">
+            <img
+              src="assets/images/Ellipse.svg"
+              alt="Ellipse décorative"
+              class="skill-ellipse"
+            />
+            <div class="skill-dot"></div>
             <h3>Référencement SEO</h3>
-            <p>Description de vos compétences en SEO...</p>
+            <p>
+              Être en ligne, c'est bien. Être trouvé, c'est mieux ! J'optimise
+              votre site pour qu'il soit bien référencé sur Google : structure
+              du code, balises stratégiques, mais plus particuliers et temps de
+              chargement optimisé. Objectif ? Améliorer votre classement,
+              attirer plus de visiteurs et générer plus de leads.
+            </p>
+          </div>
+        </div>
+        <div class="technologies">
+          <h3>Les technologies que j'utilise_</h3>
+          <div class="tech-icons">
+            <img src="assets/images/React.svg" alt="React" />
+            <img src="assets/images/Swift.svg" alt="Swift" />
+            <img src="assets/images/JS.svg" alt="JavaScript" />
+            <img src="assets/images/HTML5.svg" alt="HTML5" />
+            <img src="assets/images/Github_Grey.svg" alt="GitHub" />
           </div>
         </div>
       </section>
@@ -86,11 +175,27 @@
         <h2>Besoin d'un développeur web pour votre projet ?</h2>
         <h3>Discutons-en ensemble.</h3>
         <p>
-          Je suis ouvert aux projets web, aux applications et aux sites
-          vitrines. Si vous avez un projet en tête, n'hésitez pas à me contacter
-          pour qu'on en discute ensemble.
+          Que ce soit pour un site web, une application ou une optimisation, je
+          suis à l'écoute de vos besoins. Décrivez-moi votre projet et voyons
+          comment je peux vous aider !
         </p>
-        <a href="#" class="cta-button">Parlons de votre projet</a>
+        <form id="contact-form">
+          <div class="form-group">
+            <label for="name">votre nom_</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">votre mail_</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="form-group">
+            <label for="message">votre message_</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+          <button type="submit" class="cta-button">
+            ENVOYER VOTRE MESSAGE
+          </button>
+        </form>
       </section>
     </main>
 
@@ -112,5 +217,6 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>
