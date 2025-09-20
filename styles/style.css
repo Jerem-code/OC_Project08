@@ -209,6 +209,13 @@ nav {
   color: var(--Neon-Blue);
 }
 
+/* Sélecteur de langue dans la section hero (mobile uniquement) */
+.hero-language-selector {
+  display: none;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
 /* Section Projets */
 .projects {
   padding: 5rem 2rem;
@@ -490,10 +497,16 @@ nav {
     display: none;
   }
 
+  /* Masquer le sélecteur de langue dans la navigation sur mobile */
+  .nav-right .language-selector {
+    display: none;
+  }
+
   .cta-button {
     margin-left: auto;
     font-size: 0.875rem;
-    padding: 0.5rem 1rem;
+    padding: 0.75rem 1.5rem;
+    white-space: nowrap;
   }
 
   .hero {
@@ -547,7 +560,7 @@ nav {
   .hero .social-links .about-link {
     position: relative;
     color: transparent;
-    width: auto;
+    width: 200px;
     margin-top: 0.5rem;
   }
 
@@ -558,6 +571,17 @@ nav {
     top: 50%;
     transform: translate(-50%, -50%);
     color: var(--White-Pearl);
+    white-space: nowrap;
+  }
+
+  /* Version anglaise */
+  .hero .social-links .about-link[data-lang="en"]::after {
+    content: "ABOUT ME";
+  }
+
+  /* Afficher le sélecteur de langue dans la section hero sur mobile */
+  .hero-language-selector {
+    display: flex;
   }
 
   .projects {
@@ -896,4 +920,88 @@ footer {
 
 .footer-content p {
   font-family: var(--font-mono);
+}
+
+/* Sélecteur de langue */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.language-selector {
+  display: flex;
+  gap: 0.5rem;
+  background-color: var(--Dark-Blue);
+  border-radius: 8px;
+  padding: 0.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.lang-btn {
+  background: none;
+  border: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 40px;
+}
+
+.lang-btn:hover {
+  background-color: rgba(58, 134, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+.lang-btn.active {
+  background-color: var(--Neon-Blue);
+  color: var(--White-Pearl);
+  box-shadow: 0 0 10px rgba(58, 134, 255, 0.3);
+}
+
+.lang-btn.active:hover {
+  background-color: #2563eb;
+  transform: translateY(-1px);
+}
+
+/* Responsive pour le sélecteur de langue */
+@media (max-width: 768px) {
+  .nav-right {
+    gap: 1rem;
+  }
+
+  .language-selector {
+    gap: 0.25rem;
+    padding: 0.2rem;
+  }
+
+  .lang-btn {
+    padding: 0.4rem 0.6rem;
+    font-size: 1rem;
+    min-width: 36px;
+    height: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-right {
+    gap: 0.5rem;
+  }
+
+  .language-selector {
+    gap: 0.15rem;
+    padding: 0.1rem;
+  }
+
+  .lang-btn {
+    padding: 0.5rem 0.7rem;
+    font-size: 1.1rem;
+    min-width: 40px;
+    height: 40px;
+  }
 }

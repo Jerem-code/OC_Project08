@@ -17,11 +17,23 @@
       <nav>
         <span class="logo">JeremyPitton_</span>
         <div class="nav-links">
-          <a href="#accueil" class="active">Accueil</a>
-          <a href="#projets">Mes projets</a>
-          <a href="#apropos">À propos</a>
+          <a href="#accueil" class="active" data-translate="nav.home"
+            >Accueil</a
+          >
+          <a href="#projets" data-translate="nav.projects">Mes projets</a>
+          <a href="#apropos" data-translate="nav.about">À propos</a>
         </div>
-        <a href="#contact" class="cta-button">CONTACT</a>
+        <div class="nav-right">
+          <div class="language-selector">
+            <button class="lang-btn active" data-lang="fr" title="Français">
+              🇫🇷
+            </button>
+            <button class="lang-btn" data-lang="en" title="English">🇬🇧</button>
+          </div>
+          <a href="#contact" class="cta-button" data-translate="nav.contact"
+            >CONTACT</a
+          >
+        </div>
       </nav>
     </header>
 
@@ -34,7 +46,7 @@
             class="memoji"
           />
           <h1>Jérémy Pitton</h1>
-          <h2>Développeur Web Full-Stack</h2>
+          <h2 data-translate="hero.title">Développeur Web Full-Stack</h2>
           <div class="social-links">
             <div class="social-icons">
               <a
@@ -54,13 +66,27 @@
                 <img src="assets/images/Icon-Github.svg" alt="GitHub" />
               </a>
             </div>
-            <a href="#projets" class="about-link">À PROPOS DE MOI</a>
+            <a href="#projets" class="about-link" data-translate="hero.about"
+              >À PROPOS DE MOI</a
+            >
+          </div>
+
+          <!-- Sélecteur de langue pour mobile uniquement -->
+          <div class="hero-language-selector">
+            <div class="language-selector">
+              <button class="lang-btn active" data-lang="fr" title="Français">
+                🇫🇷
+              </button>
+              <button class="lang-btn" data-lang="en" title="English">
+                🇬🇧
+              </button>
+            </div>
           </div>
         </div>
       </section>
 
       <section id="projets" class="projects">
-        <h2>Mes projets</h2>
+        <h2 data-translate="projects.title">Mes projets</h2>
         <div class="projects-grid">
           <div class="project-card">
             <div class="technologies">
@@ -76,7 +102,10 @@
               </div>
               <div class="content">
                 <h3>Booki</h3>
-                <p class="description">
+                <p
+                  class="description"
+                  data-translate="projects.booki.description"
+                >
                   Site de réservation d'hébergements et d'activités
                   touristiques. Les défis majeurs ont été la création d'une mise
                   en page responsive adaptée à tous les écrans. Ce projet m'a
@@ -87,12 +116,20 @@
                 </p>
                 <div class="details">
                   <div class="detail-row">
-                    <span class="detail-label">année_</span>
+                    <span class="detail-label" data-translate="projects.year"
+                      >année_</span
+                    >
                     <span class="detail-value">2024</span>
                   </div>
                   <div class="detail-row">
-                    <span class="detail-label">rôle_</span>
-                    <span class="detail-value">Front-end Developer</span>
+                    <span class="detail-label" data-translate="projects.role"
+                      >rôle_</span
+                    >
+                    <span
+                      class="detail-value"
+                      data-translate="projects.booki.role"
+                      >Front-end Developer</span
+                    >
                   </div>
                 </div>
                 <div class="links">
@@ -100,12 +137,14 @@
                     href="https://jerem-code.github.io/Booki/"
                     target="_blank"
                     rel="noopener noreferrer"
+                    data-translate="projects.live-demo"
                     >Live Demo ↗</a
                   >
                   <a
                     href="https://github.com/Jerem-code/Booki"
                     target="_blank"
                     rel="noopener noreferrer"
+                    data-translate="projects.github"
                     >Github ↗</a
                   >
                 </div>
@@ -127,7 +166,10 @@
               </div>
               <div class="content">
                 <h3>Kasa</h3>
-                <p class="description">
+                <p
+                  class="description"
+                  data-translate="projects.kasa.description"
+                >
                   Application de location immobilière développée avec React et
                   React Router. Les principaux défis ont été la création d'une
                   architecture modulaire avec des composants réutilisables,
@@ -146,12 +188,20 @@
                 </p>
                 <div class="details">
                   <div class="detail-row">
-                    <span class="detail-label">année_</span>
+                    <span class="detail-label" data-translate="projects.year"
+                      >année_</span
+                    >
                     <span class="detail-value">2024</span>
                   </div>
                   <div class="detail-row">
-                    <span class="detail-label">rôle_</span>
-                    <span class="detail-value">Front-end Developer</span>
+                    <span class="detail-label" data-translate="projects.role"
+                      >rôle_</span
+                    >
+                    <span
+                      class="detail-value"
+                      data-translate="projects.kasa.role"
+                      >Front-end Developer</span
+                    >
                   </div>
                 </div>
                 <div class="links">
@@ -159,12 +209,14 @@
                     href="https://jerem-code.github.io/Kasa/#/"
                     target="_blank"
                     rel="noopener noreferrer"
+                    data-translate="projects.live-demo"
                     >Live Demo ↗</a
                   >
                   <a
                     href="https://github.com/Jerem-code/Kasa"
                     target="_blank"
                     rel="noopener noreferrer"
+                    data-translate="projects.github"
                     >Github ↗</a
                   >
                 </div>
@@ -186,7 +238,10 @@
               </div>
               <div class="content">
                 <h3>QuizMaster</h3>
-                <p class="description">
+                <p
+                  class="description"
+                  data-translate="projects.quizmaster.description"
+                >
                   Application mobile de quiz développée avec Swift et SwiftUI.
                   Les utilisateurs peuvent tester leurs connaissances à travers
                   différents niveaux de difficulté. L'application se connecte à
@@ -199,12 +254,20 @@
                 </p>
                 <div class="details">
                   <div class="detail-row">
-                    <span class="detail-label">année_</span>
+                    <span class="detail-label" data-translate="projects.year"
+                      >année_</span
+                    >
                     <span class="detail-value">2025</span>
                   </div>
                   <div class="detail-row">
-                    <span class="detail-label">rôle_</span>
-                    <span class="detail-value">iOS Developer</span>
+                    <span class="detail-label" data-translate="projects.role"
+                      >rôle_</span
+                    >
+                    <span
+                      class="detail-value"
+                      data-translate="projects.quizmaster.role"
+                      >iOS Developer</span
+                    >
                   </div>
                 </div>
               </div>
@@ -226,7 +289,10 @@
               </div>
               <div class="content">
                 <h3>Mon vieux grimoire</h3>
-                <p class="description">
+                <p
+                  class="description"
+                  data-translate="projects.grimoire.description"
+                >
                   Plateforme communautaire de notation et de partage de livres.
                   Les utilisateurs peuvent publier des livres et les évaluer,
                   créant ainsi une communauté de lecteurs passionnés. Le backend
@@ -240,12 +306,20 @@
                 </p>
                 <div class="details">
                   <div class="detail-row">
-                    <span class="detail-label">année_</span>
+                    <span class="detail-label" data-translate="projects.year"
+                      >année_</span
+                    >
                     <span class="detail-value">2025</span>
                   </div>
                   <div class="detail-row">
-                    <span class="detail-label">rôle_</span>
-                    <span class="detail-value">Backend Developer</span>
+                    <span class="detail-label" data-translate="projects.role"
+                      >rôle_</span
+                    >
+                    <span
+                      class="detail-value"
+                      data-translate="projects.grimoire.role"
+                      >Backend Developer</span
+                    >
                   </div>
                 </div>
                 <div class="links">
@@ -253,6 +327,7 @@
                     href="https://github.com/Jerem-code/MonVieuxGrimoire"
                     target="_blank"
                     rel="noopener noreferrer"
+                    data-translate="projects.github"
                     >Github ↗</a
                   >
                 </div>
@@ -268,7 +343,7 @@
           alt="Ellipse décorative"
           class="about-ellipse"
         />
-        <h2>À propos de moi</h2>
+        <h2 data-translate="about.title">À propos de moi</h2>
         <div class="skills-grid">
           <div class="skill-card">
             <img
@@ -277,8 +352,10 @@
               class="skill-ellipse"
             />
             <div class="skill-dot"></div>
-            <h3>Développeur Full-Stack</h3>
-            <p>
+            <h3 data-translate="about.skills.fullstack.title">
+              Développeur Full-Stack
+            </h3>
+            <p data-translate="about.skills.fullstack.description">
               Formé au développement web avec OpenClassrooms, je développe des
               applications web complètes et performantes. J'utilise des
               technologies modernes comme React, Vue.js, Node.js, etc. pour
@@ -293,8 +370,10 @@
               class="skill-ellipse"
             />
             <div class="skill-dot"></div>
-            <h3>Optimisation de code et performances</h3>
-            <p>
+            <h3 data-translate="about.skills.performance.title">
+              Optimisation de code et performances
+            </h3>
+            <p data-translate="about.skills.performance.description">
               Un site rapide, c'est une meilleure expérience utilisateur et un
               meilleur référencement. J'optimise le code en réduisant le temps
               de chargement, en minimisant les fichiers CSS/JS et en appliquant
@@ -308,8 +387,8 @@
               class="skill-ellipse"
             />
             <div class="skill-dot"></div>
-            <h3>Référencement SEO</h3>
-            <p>
+            <h3 data-translate="about.skills.seo.title">Référencement SEO</h3>
+            <p data-translate="about.skills.seo.description">
               Être en ligne, c'est bien. Être trouvé, c'est mieux ! J'optimise
               votre site pour qu'il soit bien référencé sur Google : structure
               du code, balises stratégiques, mais plus particuliers et temps de
@@ -319,7 +398,9 @@
           </div>
         </div>
         <div class="technologies">
-          <h3>Les technologies que j'utilise_</h3>
+          <h3 data-translate="about.technologies.title">
+            Les technologies que j'utilise_
+          </h3>
           <div class="tech-icons">
             <img src="assets/images/React.svg" alt="React" />
             <img src="assets/images/swift.svg" alt="Swift" />
@@ -331,27 +412,39 @@
       </section>
 
       <section id="contact" class="contact">
-        <h2>Besoin d'un développeur pour votre projet ?</h2>
-        <h3>Discutons-en ensemble.</h3>
-        <p>
+        <h2 data-translate="contact.title">
+          Besoin d'un développeur pour votre projet ?
+        </h2>
+        <h3 data-translate="contact.subtitle">Discutons-en ensemble.</h3>
+        <p data-translate="contact.description">
           Que ce soit pour un site web, une application ou une optimisation, je
           suis à l'écoute de vos besoins. Décrivez-moi votre projet et voyons
           comment je peux vous aider !
         </p>
         <form id="contact-form">
           <div class="form-group">
-            <label for="name">votre nom_</label>
+            <label for="name" data-translate="contact.form.name"
+              >votre nom_</label
+            >
             <input type="text" id="name" name="name" required />
           </div>
           <div class="form-group">
-            <label for="email">votre mail_</label>
+            <label for="email" data-translate="contact.form.email"
+              >votre mail_</label
+            >
             <input type="email" id="email" name="email" required />
           </div>
           <div class="form-group">
-            <label for="message">votre message_</label>
+            <label for="message" data-translate="contact.form.message"
+              >votre message_</label
+            >
             <textarea id="message" name="message" required></textarea>
           </div>
-          <button type="submit" class="cta-button">
+          <button
+            type="submit"
+            class="cta-button"
+            data-translate="contact.form.submit"
+          >
             ENVOYER VOTRE MESSAGE
           </button>
         </form>
@@ -381,7 +474,9 @@
             </a>
           </div>
         </div>
-        <p>&copy; 2025 - Jérémy Pitton - Développeur Web Full-Stack</p>
+        <p data-translate="footer.copyright">
+          &copy; 2025 - Jérémy Pitton - Développeur Web Full-Stack
+        </p>
       </div>
     </footer>
 
