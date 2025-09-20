@@ -69,6 +69,12 @@ const translations = {
       "Veuillez entrer une adresse email valide.",
     "contact.form.validation.message": "Veuillez entrer votre message.",
     "contact.form.validation.emailFormat": "Format d'email invalide.",
+    "contact.form.limit.daily":
+      "Limite quotidienne atteinte. Réessayez demain.",
+    "contact.form.limit.weekly":
+      "Limite hebdomadaire atteinte. Réessayez la semaine prochaine.",
+    "contact.form.limit.monthly":
+      "Limite mensuelle atteinte. Réessayez le mois prochain.",
 
     // Footer
     "footer.copyright": "© 2025 - Jérémy Pitton - Développeur Web Full-Stack",
@@ -142,6 +148,12 @@ const translations = {
     "contact.form.validation.email": "Please enter a valid email address.",
     "contact.form.validation.message": "Please enter your message.",
     "contact.form.validation.emailFormat": "Invalid email format.",
+    "contact.form.limit.daily":
+      "Daily limit reached. Please try again tomorrow.",
+    "contact.form.limit.weekly":
+      "Weekly limit reached. Please try again next week.",
+    "contact.form.limit.monthly":
+      "Monthly limit reached. Please try again next month.",
 
     // Footer
     "footer.copyright": "© 2025 - Jérémy Pitton - Full-Stack Web Developer",
@@ -278,6 +290,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (contactForm) {
     contactForm.addEventListener("submit", handleFormSubmission);
+
+    // Vérifier les limites de soumission au chargement
+    checkSubmissionLimits();
   }
 });
 
@@ -313,7 +328,9 @@ function handleFormSubmission(e) {
   })
     .then((response) => {
       if (response.ok) {
-        // Succès
+        // Succès - incrémenter le compteur de soumissions
+        incrementSubmissionCount();
+
         showMessage(
           translations[currentLang]["contact.form.success"],
           "success"
@@ -378,6 +395,99 @@ function validateForm(form, language) {
   return { isValid: true };
 }
 
+// Configuration des limites de soumission
+const SUBMISSION_LIMITS = {
+  daily: 5, // Maximum 5 soumissions par jour
+  weekly: 20, // Maximum 20 soumissions par semaine
+  monthly: 50, // Maximum 50 soumissions par mois
+};
+
+// Fonction pour vérifier les limites de soumission
+function checkSubmissionLimits() {
+  const today = new Date().toDateString();
+  const thisWeek = getWeekNumber(new Date());
+  const thisMonth = new Date().getMonth() + "-" + new Date().getFullYear();
+
+  const dailyCount = getSubmissionCount("daily", today);
+  const weeklyCount = getSubmissionCount("weekly", thisWeek);
+  const monthlyCount = getSubmissionCount("monthly", thisMonth);
+
+  const currentLang = document.documentElement.lang || "fr";
+
+  // Vérifier les limites
+  if (dailyCount >= SUBMISSION_LIMITS.daily) {
+    disableForm(
+      translations[currentLang]["contact.form.limit.daily"] ||
+        "Limite quotidienne atteinte. Réessayez demain."
+    );
+    return;
+  }
+
+  if (weeklyCount >= SUBMISSION_LIMITS.weekly) {
+    disableForm(
+      translations[currentLang]["contact.form.limit.weekly"] ||
+        "Limite hebdomadaire atteinte. Réessayez la semaine prochaine."
+    );
+    return;
+  }
+
+  if (monthlyCount >= SUBMISSION_LIMITS.monthly) {
+    disableForm(
+      translations[currentLang]["contact.form.limit.monthly"] ||
+        "Limite mensuelle atteinte. Réessayez le mois prochain."
+    );
+    return;
+  }
+}
+
+// Fonction pour obtenir le numéro de semaine
+function getWeekNumber(date) {
+  const firstDayOfYear = new Date(date.getFullYear(), 0, 1);
+  const pastDaysOfYear = (date - firstDayOfYear) / 86400000;
+  return Math.ceil((pastDaysOfYear + firstDayOfYear.getDay() + 1) / 7);
+}
+
+// Fonction pour obtenir le nombre de soumissions
+function getSubmissionCount(period, key) {
+  const storageKey = `formspree_submissions_${period}_${key}`;
+  const count = localStorage.getItem(storageKey);
+  return count ? parseInt(count) : 0;
+}
+
+// Fonction pour incrémenter le compteur de soumissions
+function incrementSubmissionCount() {
+  const today = new Date().toDateString();
+  const thisWeek = getWeekNumber(new Date());
+  const thisMonth = new Date().getMonth() + "-" + new Date().getFullYear();
+
+  // Incrémenter les compteurs
+  incrementCounter("daily", today);
+  incrementCounter("weekly", thisWeek);
+  incrementCounter("monthly", thisMonth);
+}
+
+// Fonction pour incrémenter un compteur spécifique
+function incrementCounter(period, key) {
+  const storageKey = `formspree_submissions_${period}_${key}`;
+  const currentCount = getSubmissionCount(period, key);
+  localStorage.setItem(storageKey, currentCount + 1);
+}
+
+// Fonction pour désactiver le formulaire
+function disableForm(message) {
+  const contactForm = document.getElementById("contact-form");
+  const submitButton = contactForm.querySelector('button[type="submit"]');
+
+  // Désactiver le formulaire
+  contactForm.style.opacity = "0.6";
+  contactForm.style.pointerEvents = "none";
+  submitButton.disabled = true;
+  submitButton.textContent = "Formulaire temporairement indisponible";
+
+  // Afficher le message
+  showMessage(message, "warning");
+}
+
 function showMessage(message, type) {
   // Supprimer les messages existants
   const existingMessage = document.querySelector(".form-message");
@@ -394,10 +504,12 @@ function showMessage(message, type) {
   const contactForm = document.getElementById("contact-form");
   contactForm.parentNode.insertBefore(messageDiv, contactForm.nextSibling);
 
-  // Supprimer le message après 5 secondes
-  setTimeout(() => {
-    if (messageDiv.parentNode) {
-      messageDiv.remove();
-    }
-  }, 5000);
+  // Supprimer le message après 5 secondes (sauf pour les warnings)
+  if (type !== "warning") {
+    setTimeout(() => {
+      if (messageDiv.parentNode) {
+        messageDiv.remove();
+      }
+    }, 5000);
+  }
 }
