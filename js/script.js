@@ -60,6 +60,15 @@ const translations = {
     "contact.form.email": "votre mail_",
     "contact.form.message": "votre message_",
     "contact.form.submit": "ENVOYER VOTRE MESSAGE",
+    "contact.form.success":
+      "Message envoyé avec succès ! Je vous répondrai bientôt.",
+    "contact.form.error": "Erreur lors de l'envoi. Veuillez réessayer.",
+    "contact.form.sending": "Envoi en cours...",
+    "contact.form.validation.name": "Veuillez entrer votre nom.",
+    "contact.form.validation.email":
+      "Veuillez entrer une adresse email valide.",
+    "contact.form.validation.message": "Veuillez entrer votre message.",
+    "contact.form.validation.emailFormat": "Format d'email invalide.",
 
     // Footer
     "footer.copyright": "© 2025 - Jérémy Pitton - Développeur Web Full-Stack",
@@ -125,6 +134,14 @@ const translations = {
     "contact.form.email": "your email_",
     "contact.form.message": "your message_",
     "contact.form.submit": "SEND YOUR MESSAGE",
+    "contact.form.success":
+      "Message sent successfully! I'll get back to you soon.",
+    "contact.form.error": "Error sending message. Please try again.",
+    "contact.form.sending": "Sending...",
+    "contact.form.validation.name": "Please enter your name.",
+    "contact.form.validation.email": "Please enter a valid email address.",
+    "contact.form.validation.message": "Please enter your message.",
+    "contact.form.validation.emailFormat": "Invalid email format.",
 
     // Footer
     "footer.copyright": "© 2025 - Jérémy Pitton - Full-Stack Web Developer",
@@ -254,3 +271,133 @@ const observer = new IntersectionObserver((entries) => {
 sections.forEach((section) => {
   observer.observe(section);
 });
+
+// Gestion du formulaire de contact
+document.addEventListener("DOMContentLoaded", function () {
+  const contactForm = document.getElementById("contact-form");
+
+  if (contactForm) {
+    contactForm.addEventListener("submit", handleFormSubmission);
+  }
+});
+
+function handleFormSubmission(e) {
+  e.preventDefault();
+
+  const form = e.target;
+  const submitButton = form.querySelector('button[type="submit"]');
+  const originalButtonText = submitButton.textContent;
+  const currentLang = document.documentElement.lang || "fr";
+
+  // Valider le formulaire avant l'envoi
+  const validationResult = validateForm(form, currentLang);
+  if (!validationResult.isValid) {
+    showMessage(validationResult.message, "error");
+    return;
+  }
+
+  // Changer le texte du bouton pendant l'envoi
+  submitButton.textContent = translations[currentLang]["contact.form.sending"];
+  submitButton.disabled = true;
+
+  // Créer FormData à partir du formulaire
+  const formData = new FormData(form);
+
+  // Envoyer les données à Formspree
+  fetch(form.action, {
+    method: "POST",
+    body: formData,
+    headers: {
+      Accept: "application/json",
+    },
+  })
+    .then((response) => {
+      if (response.ok) {
+        // Succès
+        showMessage(
+          translations[currentLang]["contact.form.success"],
+          "success"
+        );
+        form.reset(); // Vider le formulaire
+      } else {
+        // Erreur
+        showMessage(translations[currentLang]["contact.form.error"], "error");
+      }
+    })
+    .catch((error) => {
+      // Erreur réseau
+      showMessage(translations[currentLang]["contact.form.error"], "error");
+      console.error("Erreur:", error);
+    })
+    .finally(() => {
+      // Restaurer le bouton
+      submitButton.textContent = originalButtonText;
+      submitButton.disabled = false;
+    });
+}
+
+function validateForm(form, language) {
+  const name = form.querySelector('input[name="name"]').value.trim();
+  const email = form.querySelector('input[name="email"]').value.trim();
+  const message = form.querySelector('textarea[name="message"]').value.trim();
+
+  // Validation du nom
+  if (!name) {
+    return {
+      isValid: false,
+      message: translations[language]["contact.form.validation.name"],
+    };
+  }
+
+  // Validation de l'email
+  if (!email) {
+    return {
+      isValid: false,
+      message: translations[language]["contact.form.validation.email"],
+    };
+  }
+
+  // Validation du format email
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    return {
+      isValid: false,
+      message: translations[language]["contact.form.validation.emailFormat"],
+    };
+  }
+
+  // Validation du message
+  if (!message) {
+    return {
+      isValid: false,
+      message: translations[language]["contact.form.validation.message"],
+    };
+  }
+
+  // Si tout est valide
+  return { isValid: true };
+}
+
+function showMessage(message, type) {
+  // Supprimer les messages existants
+  const existingMessage = document.querySelector(".form-message");
+  if (existingMessage) {
+    existingMessage.remove();
+  }
+
+  // Créer le nouveau message
+  const messageDiv = document.createElement("div");
+  messageDiv.className = `form-message form-message--${type}`;
+  messageDiv.textContent = message;
+
+  // Ajouter le message après le formulaire
+  const contactForm = document.getElementById("contact-form");
+  contactForm.parentNode.insertBefore(messageDiv, contactForm.nextSibling);
+
+  // Supprimer le message après 5 secondes
+  setTimeout(() => {
+    if (messageDiv.parentNode) {
+      messageDiv.remove();
+    }
+  }, 5000);
+}
