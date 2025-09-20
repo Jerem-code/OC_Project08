@@ -993,12 +993,12 @@ footer {
     gap: 0.5rem;
   }
 
-  .language-selector {
+  .hero-language-selector .language-selector {
     gap: 0.15rem;
     padding: 0.1rem;
   }
 
-  .lang-btn {
+  .hero-language-selector .lang-btn {
     padding: 0.5rem 0.7rem;
     font-size: 1.1rem;
     min-width: 40px;
