@@ -211,7 +211,7 @@ nav {
 
 /* Sélecteur de langue dans la section hero (mobile uniquement) */
 .hero-language-selector {
-  display: none;
+  display: none !important;
   justify-content: center;
   margin-top: 2rem;
 }
@@ -581,7 +581,7 @@ nav {
 
   /* Afficher le sélecteur de langue dans la section hero sur mobile */
   .hero-language-selector {
-    display: flex;
+    display: flex !important;
   }
 
   .projects {
