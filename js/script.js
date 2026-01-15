@@ -33,6 +33,11 @@ const translations = {
       "Application mobile de quiz développée avec Swift et SwiftUI. Les utilisateurs peuvent tester leurs connaissances à travers différents niveaux de difficulté. L'application se connecte à une API REST personnalisée pour récupérer les questions. Les défis majeurs ont été la création d'une interface utilisateur intuitive avec SwiftUI, la gestion des états de l'application, et l'intégration avec l'API. Ce projet m'a permis de développer mes compétences en développement iOS natif et en architecture d'API.",
     "projects.quizmaster.role": "iOS Developer",
 
+    // SlotMachine project
+    "projects.slotmachine.description":
+      "Application de machine à sous moderne et interactive développée avec SwiftUI pour iOS. Cette application combine une interface utilisateur élégante avec des animations fluides, des effets sonores immersifs et une expérience de jeu engageante. Les défis majeurs ont été la création d'une interface utilisateur moderne avec SwiftUI, l'implémentation d'animations de rouleaux, la gestion des états de jeu, et l'intégration d'effets sonores et de retours haptiques. Ce projet m'a permis de développer mes compétences en développement iOS natif avec SwiftUI, notamment la création de composants réutilisables, la gestion des animations, et la persistance des données avec UserDefaults.",
+    "projects.slotmachine.role": "iOS Developer",
+
     // Mon Vieux Grimoire project
     "projects.grimoire.description":
       "Plateforme communautaire de notation et de partage de livres. Les utilisateurs peuvent publier des livres et les évaluer, créant ainsi une communauté de lecteurs passionnés. Le backend a été développé avec Node.js et Express, utilisant une architecture RESTful. La base de données MongoDB permet une gestion flexible des données des livres et des utilisateurs. Les défis majeurs ont été la mise en place d'un système d'authentification sécurisé, la gestion des relations entre les collections MongoDB, et l'optimisation des performances de l'API.",
@@ -112,6 +117,11 @@ const translations = {
     "projects.quizmaster.description":
       "Mobile quiz application developed with Swift and SwiftUI. Users can test their knowledge through different difficulty levels. The application connects to a custom REST API to retrieve questions. The main challenges were creating an intuitive user interface with SwiftUI, managing application states, and API integration. This project allowed me to develop my native iOS development and API architecture skills.",
     "projects.quizmaster.role": "iOS Developer",
+
+    // SlotMachine project
+    "projects.slotmachine.description":
+      "Modern and interactive slot machine application developed with SwiftUI for iOS. This application combines an elegant user interface with smooth animations, immersive sound effects and an engaging gaming experience. The main challenges were creating a modern user interface with SwiftUI, implementing reel animations, managing game states, and integrating sound effects and haptic feedback. This project allowed me to develop my native iOS development skills with SwiftUI, particularly creating reusable components, managing animations, and data persistence with UserDefaults.",
+    "projects.slotmachine.role": "iOS Developer",
 
     // Mon Vieux Grimoire project
     "projects.grimoire.description":
