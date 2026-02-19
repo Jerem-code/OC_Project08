@@ -35,14 +35,6 @@ Ce portfolio présente mes projets et compétences en tant que développeur web 
 1. Clonez ce dépôt
 2. Ouvrez `index.html` dans votre navigateur
 
-## Développement
-
-Pour modifier le projet :
-
-1. Modifiez les fichiers HTML/CSS/JS selon vos besoins
-2. Testez les changements dans votre navigateur
-3. Ajoutez vos propres projets dans la section "Projets"
-
 ## Contact
 
 Pour toute question ou suggestion, n'hésitez pas à me contacter. 
